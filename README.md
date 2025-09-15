@@ -14,3 +14,6 @@ The project designs and implements efficient disk scheduling algorithms in opera
 •	Look Right
 •	C-Look
 •	Check for Optimal
+
+# output of FCFS
+<img width="635" height="641" alt="image" src="https://github.com/user-attachments/assets/7e4ffde0-a8c9-423a-a72d-f7b459fd16eb" />
