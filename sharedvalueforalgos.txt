@@ -1,0 +1,26 @@
+package osproject; // Package declaration
+
+import java.util.ArrayList;
+import java.util.Collections;
+
+// Class declaration
+public class sharedvalueforalgos {
+    // Member variables
+    protected final ArrayList<Integer> input_temp; // List of input cylinders
+    protected final ArrayList<Integer> cylinders; // List of cylinders processed
+    protected final int head_start; // Starting position of the head
+    protected int Total_Movement; // Total movement of the head
+
+    // Constructor
+    public sharedvalueforalgos(ArrayList<Integer> input_cylinders, int head) {
+        this.input_temp = input_cylinders; // Initialize input_temp with the input cylinders
+        head_start = head; // Initialize head_start with the starting position of the head
+        Total_Movement = 0; // Initialize Total_Movement to zero
+        cylinders = new ArrayList<>(); // Initialize cylinders list
+    }
+
+    // Method to sort the input cylinders
+    protected void sort(ArrayList<Integer> input_cylinder) {
+        Collections.sort(input_cylinder); // Sort the input cylinders
+    }
+}

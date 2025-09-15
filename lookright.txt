@@ -1,0 +1,56 @@
+package osproject;
+
+import java.util.ArrayList;
+
+public class lookright extends sharedvalueforalgos implements disksceduler {
+    private static int seekditance;
+    private final ArrayList<Integer> input_temp;
+
+    public lookright(ArrayList<Integer> input_cylinders, int head) {
+        super(input_cylinders, head);
+        input_temp = new ArrayList<>(input_cylinders);
+    }
+
+    @Override
+    public ArrayList<Integer> schedule() {
+        sort(input_temp);
+
+        int startpoint = 0;
+        cylinders.add(head_start);
+        for (int i = 0; i < input_temp.size(); i++) {
+            if (input_temp.get(i) > head_start) {
+                startpoint = i;
+                break;
+            }
+        }
+
+        int start = head_start;
+        for (int i = startpoint; i < input_temp.size(); i++) {
+            Total_Movement += Math.abs(start - input_temp.get(i));
+            cylinders.add(input_temp.get(i));
+            start = input_temp.get(i);
+        }
+
+        for (int i = startpoint - 1; i >= 0; i--) {
+            Total_Movement += Math.abs(start - input_temp.get(i));
+            cylinders.add(input_temp.get(i));
+            start = input_temp.get(i);
+        }
+
+        System.out.println("RIGHTLOOK algorithm Total SEEK distance= " + Total_Movement);
+        seekditance = Total_Movement;
+        double cylinder_movement_time = 0.5;
+        System.out.println("RIGHTLOOK algorithm Total SEEK time = " + Total_Movement * cylinder_movement_time);
+        System.out.println("---------------------------------------------------------------");
+
+        return cylinders;
+    }
+
+    public static int getTotalMovement() {
+        return seekditance;
+    }
+
+    public static double getTotalTime() {
+        return seekditance * 0.5;
+    }
+}
